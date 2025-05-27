@@ -290,9 +290,6 @@ alembic downgrade -1
    - Verify all dependencies are installed
    - Check Python path
 
-### Logs
-Application logs are printed to console. For production, configure proper logging to files.
-
 ## Contributing
 
 1. Fork the repository
@@ -301,13 +298,3 @@ Application logs are printed to console. For production, configure proper loggin
 4. Add tests if applicable
 5. Submit a pull request
 
-## License
-
-This project is licensed under the MIT License.
-
-## Support
-
-For issues and questions:
-1. Check the troubleshooting section
-2. Review the API documentation at `/docs`
-3. Create an issue in the repository 
