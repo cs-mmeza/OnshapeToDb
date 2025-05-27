@@ -31,7 +31,7 @@ A Python REST API built with FastAPI that integrates with Onshape CAD software t
 
 ### 1. Clone the Repository
 ```bash
-git clone <repository-url>
+git clone https://github.com/cs-mmeza/OnshapeToDb.git
 cd onshape-api-integration
 ```
 
