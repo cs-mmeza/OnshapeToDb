@@ -1,0 +1,231 @@
+{
+  "info": {
+    "name": "Onshape API Integration",
+    "description": "Collection for testing Onshape API Integration endpoints",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:8000",
+      "type": "string"
+    },
+    {
+      "key": "api_base",
+      "value": "{{base_url}}/api/v1",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "Health Check",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{api_base}}/health",
+          "host": ["{{api_base}}"],
+          "path": ["health"]
+        }
+      }
+    },
+    {
+      "name": "Test Onshape Connection",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{api_base}}/onshape/test-connection",
+          "host": ["{{api_base}}"],
+          "path": ["onshape", "test-connection"]
+        }
+      }
+    },
+    {
+      "name": "Get Statistics",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{api_base}}/stats",
+          "host": ["{{api_base}}"],
+          "path": ["stats"]
+        }
+      }
+    },
+    {
+      "name": "Sync Documents",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "url": {
+          "raw": "{{api_base}}/sync/documents?force_refresh=false",
+          "host": ["{{api_base}}"],
+          "path": ["sync", "documents"],
+          "query": [
+            {
+              "key": "force_refresh",
+              "value": "false"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Get Documents",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{api_base}}/documents?skip=0&limit=10",
+          "host": ["{{api_base}}"],
+          "path": ["documents"],
+          "query": [
+            {
+              "key": "skip",
+              "value": "0"
+            },
+            {
+              "key": "limit",
+              "value": "10"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Get Document by ID",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{api_base}}/documents/{{document_id}}",
+          "host": ["{{api_base}}"],
+          "path": ["documents", "{{document_id}}"]
+        }
+      }
+    },
+    {
+      "name": "Get Workspaces",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{api_base}}/workspaces?skip=0&limit=10",
+          "host": ["{{api_base}}"],
+          "path": ["workspaces"],
+          "query": [
+            {
+              "key": "skip",
+              "value": "0"
+            },
+            {
+              "key": "limit",
+              "value": "10"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Get Elements",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{api_base}}/elements?skip=0&limit=10",
+          "host": ["{{api_base}}"],
+          "path": ["elements"],
+          "query": [
+            {
+              "key": "skip",
+              "value": "0"
+            },
+            {
+              "key": "limit",
+              "value": "10"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Get Parts",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{api_base}}/parts?skip=0&limit=10",
+          "host": ["{{api_base}}"],
+          "path": ["parts"],
+          "query": [
+            {
+              "key": "skip",
+              "value": "0"
+            },
+            {
+              "key": "limit",
+              "value": "10"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Get Features",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{api_base}}/features?skip=0&limit=10",
+          "host": ["{{api_base}}"],
+          "path": ["features"],
+          "query": [
+            {
+              "key": "skip",
+              "value": "0"
+            },
+            {
+              "key": "limit",
+              "value": "10"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Get Sync Logs",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{api_base}}/sync/logs?skip=0&limit=10",
+          "host": ["{{api_base}}"],
+          "path": ["sync", "logs"],
+          "query": [
+            {
+              "key": "skip",
+              "value": "0"
+            },
+            {
+              "key": "limit",
+              "value": "10"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Full Sync",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "url": {
+          "raw": "{{api_base}}/sync/full",
+          "host": ["{{api_base}}"],
+          "path": ["sync", "full"]
+        }
+      }
+    }
+  ]
+} 
