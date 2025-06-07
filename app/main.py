@@ -16,9 +16,6 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
-# Create database tables
-Base.metadata.create_all(bind=engine)
-
 # Create FastAPI app
 app = FastAPI(
     title="Onshape API Integration",
@@ -39,6 +36,13 @@ app.add_middleware(
 
 # Include API routes
 app.include_router(router, prefix="/api/v1")
+
+# Create database tables
+try:
+    Base.metadata.create_all(bind=engine)
+except Exception as e:
+    print(f"Warning: Database initialization failed: {e}")
+    print("Continuing without database...")
 
 # Global exception handler
 @app.exception_handler(Exception)
@@ -61,8 +65,8 @@ async def root():
 
 # Health check endpoint
 @app.get("/health")
-async def health():
-    return {"status": "healthy"}
+async def health_check():
+    return {"status": "healthy", "message": "Service is running"}
 
 if __name__ == "__main__":
     uvicorn.run(

@@ -423,4 +423,130 @@ async def get_statistics(db: Session = Depends(get_db)):
         return stats
     except Exception as e:
         logger.error(f"Failed to get statistics: {str(e)}")
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+# Direct Onshape API endpoints (no database storage)
+@router.get("/onshape/direct/documents/{document_id}")
+async def get_onshape_document_direct(document_id: str):
+    """Get document info directly from Onshape API"""
+    try:
+        client = OnshapeClient()
+        document_info = client.get_document(document_id)
+        return {
+            "status": "success",
+            "data": document_info
+        }
+    except Exception as e:
+        logger.error(f"Failed to get document from Onshape: {str(e)}")
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@router.get("/onshape/direct/documents/{document_id}/workspaces")
+async def get_onshape_workspaces_direct(document_id: str):
+    """Get workspaces directly from Onshape API"""
+    try:
+        client = OnshapeClient()
+        workspaces = client.get_document_workspaces(document_id)
+        return {
+            "status": "success",
+            "data": workspaces
+        }
+    except Exception as e:
+        logger.error(f"Failed to get workspaces from Onshape: {str(e)}")
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@router.get("/onshape/direct/documents/{document_id}/workspaces/{workspace_id}/elements")
+async def get_onshape_elements_direct(document_id: str, workspace_id: str):
+    """Get elements directly from Onshape API"""
+    try:
+        client = OnshapeClient()
+        elements = client.get_document_elements(document_id, workspace_id)
+        return {
+            "status": "success",
+            "data": elements
+        }
+    except Exception as e:
+        logger.error(f"Failed to get elements from Onshape: {str(e)}")
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@router.get("/onshape/direct/partstudios/{document_id}/{workspace_id}/{element_id}/parts")
+async def get_onshape_parts_direct(document_id: str, workspace_id: str, element_id: str):
+    """Get parts from part studio directly from Onshape API"""
+    try:
+        client = OnshapeClient()
+        parts = client.get_parts(document_id, workspace_id, element_id)
+        return {
+            "status": "success",
+            "data": parts
+        }
+    except Exception as e:
+        logger.error(f"Failed to get parts from Onshape: {str(e)}")
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@router.get("/onshape/direct/partstudios/{document_id}/{workspace_id}/{element_id}/features")
+async def get_onshape_features_direct(document_id: str, workspace_id: str, element_id: str):
+    """Get features from part studio directly from Onshape API"""
+    try:
+        client = OnshapeClient()
+        features = client.get_features(document_id, workspace_id, element_id)
+        return {
+            "status": "success",
+            "data": features
+        }
+    except Exception as e:
+        logger.error(f"Failed to get features from Onshape: {str(e)}")
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@router.get("/onshape/direct/partstudios/{document_id}/{workspace_id}/{element_id}/parts/{part_id}/massproperties")
+async def get_onshape_part_mass_properties_direct(
+    document_id: str, 
+    workspace_id: str, 
+    element_id: str, 
+    part_id: str
+):
+    """Get part mass properties directly from Onshape API"""
+    try:
+        client = OnshapeClient()
+        mass_properties = client.get_part_mass_properties(document_id, workspace_id, element_id, part_id)
+        return {
+            "status": "success",
+            "data": mass_properties
+        }
+    except Exception as e:
+        logger.error(f"Failed to get mass properties from Onshape: {str(e)}")
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@router.get("/onshape/direct/assemblies/{document_id}/{workspace_id}/{element_id}")
+async def get_onshape_assembly_direct(document_id: str, workspace_id: str, element_id: str):
+    """Get assembly info directly from Onshape API"""
+    try:
+        client = OnshapeClient()
+        assembly = client.get_assembly(document_id, workspace_id, element_id)
+        return {
+            "status": "success",
+            "data": assembly
+        }
+    except Exception as e:
+        logger.error(f"Failed to get assembly from Onshape: {str(e)}")
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@router.get("/onshape/direct/assemblies/{document_id}/{workspace_id}/{element_id}/definition")
+async def get_onshape_assembly_definition_direct(document_id: str, workspace_id: str, element_id: str):
+    """Get assembly definition directly from Onshape API"""
+    try:
+        client = OnshapeClient()
+        definition = client.get_assembly_definition(document_id, workspace_id, element_id)
+        return {
+            "status": "success",
+            "data": definition
+        }
+    except Exception as e:
+        logger.error(f"Failed to get assembly definition from Onshape: {str(e)}")
         raise HTTPException(status_code=500, detail=str(e)) 

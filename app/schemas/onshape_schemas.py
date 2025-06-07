@@ -147,7 +147,7 @@ class SyncLogBase(BaseModel):
     message: Optional[str] = None
     records_processed: int = 0
     errors_count: int = 0
-    metadata: Optional[Dict[str, Any]] = None
+    sync_metadata: Optional[Dict[str, Any]] = None
 
 
 class SyncLogCreate(SyncLogBase):

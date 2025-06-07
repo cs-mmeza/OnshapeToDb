@@ -1,6 +1,7 @@
 from sqlalchemy import Column, Integer, String, DateTime, Text, JSON, ForeignKey, Boolean
 from sqlalchemy.orm import relationship
 from sqlalchemy.sql import func
+
 from app.database import Base
 
 
@@ -118,4 +119,4 @@ class SyncLog(Base):
     errors_count = Column(Integer, default=0)
     started_at = Column(DateTime(timezone=True), server_default=func.now())
     completed_at = Column(DateTime(timezone=True))
-    metadata = Column(JSON) 
+    sync_metadata = Column(JSON) 
